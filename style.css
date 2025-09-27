@@ -21,7 +21,7 @@ img{max-width:100%;display:block}
 .hotline b{letter-spacing:.3px}
 .hero .container{position:relative;height:100%;display:flex;align-items:center}
 
-/* Lead Form - căn giữa heading & bullets */
+/* Lead Form */
 .leadbox{
   width:340px;background:var(--green-dark);color:#fff;border-radius:4px;
   padding:18px 18px 16px;box-shadow:0 16px 34px rgba(0,0,0,.35);text-align:center;
@@ -41,43 +41,45 @@ img{max-width:100%;display:block}
 .grid-2{display:grid;gap:28px;grid-template-columns:1.05fr .95fr}
 .img-card{border-radius:4px;overflow:hidden;box-shadow:0 10px 22px rgba(0,0,0,.15)}
 .title{font-weight:800;letter-spacing:.3px;margin:0 0 8px 0}
-.title--green{color:var(--green-dark)}  /* các tiêu đề xanh lá */
-.title--accent{                        /* tiêu đề vàng + gạch chân */
+.title--green{color:var(--green-dark)}
+.title--accent{
   color:var(--yellow);
   text-decoration: underline;
   text-decoration-thickness: 3px;
   text-underline-offset: 6px;
 }
 
-/* GREEN BAND (điều chỉnh bố cục & chữ trắng) */
+/* GREEN BAND (1 ảnh, chữ trắng; khoảng dưới mô tả nhỏ) */
 .band{
-  background:#6fb43a;                 /* dải xanh */
+  background:#6fb43a;
   padding:30px 0 38px;
-  color:#fff;                          /* chữ trong band mặc định trắng */
+  color:#fff;
 }
 .band__inner{ text-align:center; }
 .band .triplet{
   display:grid;
-  grid-template-columns:repeat(3, minmax(240px, 1fr));
+  grid-template-columns: minmax(260px, 1fr); /* chỉ 1 cột */
   gap:20px;
-  max-width:1040px;
+  max-width:900px;
   margin:12px auto 0;
 }
 .band .triplet img{
   width:100%;
-  aspect-ratio: 4 / 3;                 /* 3 ảnh đồng đều tỉ lệ */
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius:6px;
   box-shadow:0 10px 20px rgba(0,0,0,.18);
 }
 .band .band-text{
   max-width:900px;
-  margin:14px auto 0;
-  color:#fff;                          /* đảm bảo chữ trắng */
+  margin-inline:auto;
+  margin-block-start:12px;
+  margin-block-end:8px; /* giảm khoảng dưới */
+  color:#fff;
   opacity:.98;
 }
 
-/* Bottom inline form (có thêm email) */
+/* Bottom inline form */
 .footer-cta{background:#d9ebba;padding:20px 0 40px}
 .inline-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;margin-top:10px}
 .inline-form input{padding:14px 12px;border:1px solid #c7d8a5;border-radius:2px;font-size:16px}
