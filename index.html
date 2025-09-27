@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bố cục khung ảnh</title>
+  <style>
+    :root {
+      --gap: 14px;
+      --radius: 18px;
+      --bg: #0f172a;        /* slate-900 */
+      --card: #111827;      /* gray-900 */
+      --ink: #e5e7eb;       /* gray-200 */
+      --ink-dim: #9ca3af;   /* gray-400 */
+      --accent: #38bdf8;    /* sky-400 */
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink);
+      background: radial-gradient(1200px 800px at 10% -10%, #1e293b, transparent),
+                  radial-gradient(1200px 800px at 110% 10%, #0b1120, transparent),
+                  var(--bg);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 16px 60px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      font-size: clamp(22px, 2.4vw, 32px);
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button, select {
+      appearance: none;
+      background: #0b1220;
+      color: var(--ink);
+      border: 1px solid #243244;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font: inherit;
+      cursor: pointer;
+    }
+    button:hover, select:hover { border-color: #2f415a; }
+
+    /* GALLERY GRID */
+    .gallery {
+      display: grid;
+      gap: var(--gap);
+      grid-auto-rows: 1fr;
+      /* Mặc định: layout-1 */
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-areas:
+        "A A A A B B B C C C C C"
+        "A A A A B B B C C C C C"
+        "D D D E E F F F F G G G"
+        "D D D E E F F F F G G G";
+    }
+
+    /* Các layout khác, chuyển qua select ở trên */
+    .layout-2 {
+      grid-template-areas:
+        "A A B B B C C C D D D D"
+        "A A B B B C C C D D D D"
+        "E E E F F F F F G G H H"
+        "E E E F F F F F G G H H";
+    }
+
+    .layout-3 {
+      grid-template-areas:
+        "A A A A B B B B C C C C"
+        "D D D E E E F F F G G G"
+        "D D D E E E F F F G G G"
+        "H H H H I I I I J J J J";
+    }
+
+    .frame {
+      position: relative;
+      background: linear-gradient(180deg, #0b1220, #0c1220);
+      border-radius: var(--radius);
+      border: 1px dashed #2a3a52;
+      min-height: 120px; /* an toàn cho mobile */
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      isolation: isolate;
+    }
+
+    .frame.dragover { outline: 2px dashed var(--accent); outline-offset: -10px; }
+
+    .frame input[type="file"] {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 3;
+    }
+
+    .placeholder {
+      text-align: center;
+      color: var(--ink-dim);
+      font-size: 14px;
+      line-height: 1.2;
+      padding: 10px 12px;
+      z-index: 1;
+      user-select: none;
+    }
+    .placeholder b { color: var(--ink); font-weight: 600; }
+
+    .frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 2;
+      display: none; /* ẩn cho tới khi người dùng chọn ảnh */
+      transition: transform .6s cubic-bezier(.2,.8,.2,1), opacity .25s ease;
+    }
+
+    .frame.filled { border-style: solid; border-color: #111827; }
+    .frame.filled .placeholder { display: none; }
+    .frame.filled img { display: block; }
+    .frame:hover img.filled { transform: scale(1.02); }
+
+    /* Gán các ô theo area */
+    .A { grid-area: A; }
+    .B { grid-area: B; }
+    .C { grid-area: C; }
+    .D { grid-area: D; }
+    .E { grid-area: E; }
+    .F { grid-area: F; }
+    .G { grid-area: G; }
+    .H { grid-area: H; }
+    .I { grid-area: I; }
+    .J { grid-area: J; }
+
+    /* Responsive: tablet */
+    @media (max-width: 900px) {
+      .gallery {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-areas:
+          "A A A B B B"
+          "C C C C D D"
+          "E E F F F F"
+          "G G G H H H"
+          "I I I J J J";
+      }
+    }
+    /* Mobile */
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: 1fr;
+        grid-template-areas: none;
+      }
+      .frame { min-height: 180px; }
+    }
+
+    footer { margin-top: 24px; color: var(--ink-dim); font-size: 14px; }
+    code.k { background: #0b1220; border: 1px solid #1f2d40; padding: 2px 6px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="title">Bố cục khung ảnh</div>
+      <div class="controls">
+        <label>
+          <select id="layoutSelect" title="Chọn bố cục">
+            <option value="1">Layout 1 (mặc định)</option>
+            <option value="2">Layout 2</option>
+            <option value="3">Layout 3</option>
+          </select>
+        </label>
+        <button id="clearBtn" title="Xoá tất cả ảnh">Xoá ảnh</button>
+      </div>
+    </header>
+
+    <main id="gallery" class="gallery">
+      <!-- Tạo 10 ô; bạn có thể nhân bớt theo nhu cầu và chỉnh grid-area ở CSS trên -->
+      <label class="frame A">
+        <input type="file" accept="image/*" />
+        <img alt="Ảnh A" />
+        <div class="placeholder">Thả ảnh vào đây<br><b>A</b></div>
+      </label>
+
+      <label class="frame B">
+        <input type="file" accept="image/*" />
+        <img alt="Ảnh B" />
+        <div class="placeholder">Kéo & thả hoặc bấm để chọn<br><b>B</b></div>
+      </label>
+
+      <label class="frame C">
+        <input type="file" accept="image/*" />
+        <img alt="Ảnh C" />
+        <div class="placeholder">C</div>
+      </label>
+
+      <label class="frame D">
+        <input type="file" accept="image/*" />
+        <img alt="Ảnh D" />
+        <div class="placeholder">D</div>
+      </label>
+
+      <label class="frame E">
+        <input type="file" accept="image/*" />
+        <img alt="Ảnh E" />
+        <div class="placeholder">E</div>
+      </label>
+
+      <label class="frame F">
+        <input type="file" accept="image/*" />
+        <img alt="Ảnh F" />
+        <div class="placeholder">F</div>
+      </label>
+
+      <label class="frame G">
+        <input type="file" accept="image/*" />
+        <img alt="Ảnh G" />
+        <div class="placeholder">G</div>
+      </label>
+
+      <label class="frame H">
+        <input type="file" accept="image/*" />
+        <img alt="Ảnh H" />
+        <div class="placeholder">H</div>
+      </label>
+
+      <label class="frame I">
+        <input type="file" accept="image/*" />
+        <img alt="Ảnh I" />
+        <div class="placeholder">I</div>
+      </label>
+
+      <label class="frame J">
+        <input type="file" accept="image/*" />
+        <img alt="Ảnh J" />
+        <div class="placeholder">J</div>
+      </label>
+    </main>
+
+    <footer>
+      Mẹo: để "cố định" tỉ lệ khung, bạn có thể đặt chiều cao cụ thể cho từng ô (ví dụ <code class="k">.A{ aspect-ratio: 4 / 3; }</code>) hoặc thêm <code class="k">min-height</code> theo nhu cầu.
+    </footer>
+  </div>
+
+  <script>
+    const gallery = document.getElementById('gallery');
+    const clearBtn = document.getElementById('clearBtn');
+    const layoutSelect = document.getElementById('layoutSelect');
+
+    // Chuyển layout
+    layoutSelect.addEventListener('change', (e) => {
+      gallery.classList.remove('layout-2', 'layout-3');
+      if (e.target.value === '2') gallery.classList.add('layout-2');
+      if (e.target.value === '3') gallery.classList.add('layout-3');
+    });
+
+    // Xử lý tải ảnh & kéo-thả
+    function wireFrame(frame) {
+      const input = frame.querySelector('input[type="file"]');
+      const img = frame.querySelector('img');
+
+      input.addEventListener('change', () => {
+        const file = input.files && input.files[0];
+        if (!file) return;
+        const url = URL.createObjectURL(file);
+        img.src = url;
+        img.onload = () => URL.revokeObjectURL(url);
+        frame.classList.add('filled');
+        img.classList.add('filled');
+      });
+
+      // Kéo thả trực tiếp
+      frame.addEventListener('dragover', (ev) => { ev.preventDefault(); frame.classList.add('dragover'); });
+      frame.addEventListener('dragleave', () => frame.classList.remove('dragover'));
+      frame.addEventListener('drop', (ev) => {
+        ev.preventDefault();
+        frame.classList.remove('dragover');
+        const file = ev.dataTransfer.files && ev.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) {
+          const url = URL.createObjectURL(file);
+          img.src = url;
+          img.onload = () => URL.revokeObjectURL(url);
+          frame.classList.add('filled');
+          img.classList.add('filled');
+        }
+      });
+    }
+
+    document.querySelectorAll('.frame').forEach(wireFrame);
+
+    // Nút xoá tất cả
+    clearBtn.addEventListener('click', () => {
+      document.querySelectorAll('.frame').forEach(frame => {
+        const img = frame.querySelector('img');
+        const input = frame.querySelector('input[type="file"]');
+        img.removeAttribute('src');
+        img.classList.remove('filled');
+        frame.classList.remove('filled');
+        if (input) input.value = '';
+      });
+    });
+  </script>
+</body>
+</html>
