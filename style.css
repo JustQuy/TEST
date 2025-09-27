@@ -87,10 +87,47 @@ img{max-width:100%;display:block}
 }
 
 /* Bottom inline form */
-.footer-cta{background:#d9ebba;padding:20px 0 40px}
-.inline-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;margin-top:10px}
-.inline-form input{padding:14px 12px;border:1px solid #c7d8a5;border-radius:2px;font-size:16px}
-.inline-form button{background:var(--yellow);color:#13150b;font-weight:800;font-size:16px;border:0;border-radius:2px;padding:12px 20px;cursor:pointer;box-shadow:0 8px 16px rgba(0,0,0,.25)}
+.footer-cta {
+  background: var(--yellow);   /* đổi sang màu vàng */
+  padding: 30px 0 40px;
+}
+
+.inline-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;  /* 2 cột */
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.inline-form input:nth-child(1),
+.inline-form input:nth-child(2) {
+  grid-row: 1;  /* hàng 1 */
+}
+
+.inline-form input:nth-child(3),
+.inline-form button {
+  grid-row: 2;  /* hàng 2 */
+}
+
+.inline-form input {
+  padding: 14px 12px;
+  border: 1px solid #c7d8a5;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.inline-form button {
+  background: #13150b;  /* nút đen chữ vàng để nổi bật trên nền vàng */
+  color: #fff;
+  font-weight: 800;
+  font-size: 16px;
+  border: 0;
+  border-radius: 2px;
+  padding: 14px 20px;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0,0,0,.25);
+}
+
 
 @media (max-width: 960px){
   .grid-2{grid-template-columns:1fr}
