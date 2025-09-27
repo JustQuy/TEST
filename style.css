@@ -22,17 +22,36 @@ img{max-width:100%;display:block}
 .hero .container{position:relative;height:100%;display:flex;align-items:center;justify-content:center}
 
 /* Lead Form */
-.leadbox{
-  width:340px;background:var(--green-dark);color:#fff;border-radius:4px;
-  padding:18px 18px 16px;box-shadow:0 16px 34px rgba(0,0,0,.35);text-align:center;
-}
 .leadbox h3{margin:0 0 10px;line-height:1.25;font-weight:800}
 .bullets{margin:0 auto 12px;padding:0;display:inline-block;text-align:left}
-.bullets li{margin:6px 0;list-style:none;position:relative;padding-left:20px}
-.bullets li::before{content:'✔';position:absolute;left:0;top:0;color:#fff;font-weight:800;opacity:.9}
+.bullets li{
+  margin:6px 0;
+  list-style:none;
+  position:relative;
+  padding-left:20px;
+  font-style: italic;   /* chữ nghiêng */
+}
+.bullets li::before{
+  content:'✔';
+  position:absolute;
+  left:0;top:0;
+  color:#fff;
+  font-weight:800;
+  opacity:.9
+}
 .field{margin:8px 0}
 .leadbox input{width:100%;border:0;border-radius:2px;padding:12px 10px;font-size:15px;color:#222}
-.btn-cta{display:inline-block;border:0;background:var(--yellow);color:#13150b;font-weight:800;padding:12px 14px;border-radius:2px;cursor:pointer;box-shadow:0 8px 16px rgba(0,0,0,.25)}
+.btn-cta{
+  display:inline-block;
+  border:0;
+  background:var(--yellow);
+  color:#fff;               /* chữ trắng cho button trên */
+  font-weight:800;
+  padding:12px 14px;
+  border-radius:2px;
+  cursor:pointer;
+  box-shadow:0 8px 16px rgba(0,0,0,.25)
+}
 .btn-cta:hover{filter:brightness(.95)}
 
 /* Sections */
@@ -116,7 +135,7 @@ img{max-width:100%;display:block}
 }
 
 .inline-form button {
-  background: #13150b;  /* nút đen chữ vàng để nổi bật trên nền vàng */
+  background: var(--green);  /* nút đen chữ vàng để nổi bật trên nền vàng */
   color: #fff;
   font-weight: 800;
   font-size: 16px;
