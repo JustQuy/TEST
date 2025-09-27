@@ -49,28 +49,35 @@ img{max-width:100%;display:block}
   text-underline-offset: 6px;
 }
 
-/* GREEN BAND (1 ảnh, chữ trắng; khoảng dưới mô tả nhỏ) */
+/* GREEN BAND (ảnh nằm bên phải tiêu đề) */
 .band{
   background:#6fb43a;
   padding:30px 0 38px;
-  color:#fff;
+  color:#fff; /* toàn bộ chữ trong band màu trắng */
 }
-.band__inner{ text-align:center; }
-.band .triplet{
+
+.band__top{
   display:grid;
-  grid-template-columns: minmax(260px, 1fr); /* chỉ 1 cột */
-  gap:20px;
-  max-width:900px;
-  margin:12px auto 0;
+  grid-template-columns: 1fr minmax(300px, 460px); /* trái: tiêu đề, phải: ảnh */
+  gap: 24px;
+  align-items: center;
 }
-.band .triplet img{
+.band__top .title{
+  margin:0; /* sát trên để “đúng 1 dòng” theo mẫu */
+  color: var(--yellow);
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+.band__img{
   width:100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
   border-radius:6px;
   box-shadow:0 10px 20px rgba(0,0,0,.18);
 }
-.band .band-text{
+
+.band-text{
   max-width:900px;
   margin-inline:auto;
   margin-block-start:12px;
@@ -87,6 +94,5 @@ img{max-width:100%;display:block}
 @media (max-width: 960px){
   .grid-2{grid-template-columns:1fr}
   .hero{height:520px}
-  .band .triplet{grid-template-columns:1fr}
-  .inline-form{grid-template-columns:1fr;gap:10px}
+  .band__top{grid-template-columns:1fr} /* mobile: tiêu đề trên, ảnh dưới */
 }
