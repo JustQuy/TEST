@@ -161,3 +161,6 @@ img{max-width:100%;display:block}
   .band__top{grid-template-columns:1fr}
   .hero .container{justify-content:center;padding-left:0}
 }
+.band__top .title {
+  color: #fff !important;
+}
