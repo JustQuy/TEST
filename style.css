@@ -21,27 +21,18 @@ img{max-width:100%;display:block}
 .hotline b{letter-spacing:.3px}
 .hero .container{position:relative;height:100%;display:flex;align-items:center}
 
-/* Lead Form - centered heading & bullets */
+/* Lead Form - căn giữa heading & bullets */
 .leadbox{
   width:340px;background:var(--green-dark);color:#fff;border-radius:4px;
   padding:18px 18px 16px;box-shadow:0 16px 34px rgba(0,0,0,.35);text-align:center;
 }
 .leadbox h3{margin:0 0 10px;line-height:1.25;font-weight:800}
-.bullets{
-  margin:0 auto 12px; padding:0; display:inline-block; text-align:left;
-}
-.bullets li{
-  margin:6px 0; list-style:none; position:relative; padding-left:20px;
-}
-.bullets li::before{
-  content:'✔'; position:absolute; left:0; top:0; color:#fff; font-weight:800; opacity:.9;
-}
+.bullets{margin:0 auto 12px;padding:0;display:inline-block;text-align:left}
+.bullets li{margin:6px 0;list-style:none;position:relative;padding-left:20px}
+.bullets li::before{content:'✔';position:absolute;left:0;top:0;color:#fff;font-weight:800;opacity:.9}
 .field{margin:8px 0}
 .leadbox input{width:100%;border:0;border-radius:2px;padding:12px 10px;font-size:15px;color:#222}
-.btn-cta{
-  display:inline-block;border:0;background:var(--yellow);color:#13150b;
-  font-weight:800;padding:12px 14px;border-radius:2px;cursor:pointer;box-shadow:0 8px 16px rgba(0,0,0,.25)
-}
+.btn-cta{display:inline-block;border:0;background:var(--yellow);color:#13150b;font-weight:800;padding:12px 14px;border-radius:2px;cursor:pointer;box-shadow:0 8px 16px rgba(0,0,0,.25)}
 .btn-cta:hover{filter:brightness(.95)}
 
 /* Sections */
@@ -50,30 +41,50 @@ img{max-width:100%;display:block}
 .grid-2{display:grid;gap:28px;grid-template-columns:1.05fr .95fr}
 .img-card{border-radius:4px;overflow:hidden;box-shadow:0 10px 22px rgba(0,0,0,.15)}
 .title{font-weight:800;letter-spacing:.3px;margin:0 0 8px 0}
-.title--green{color:var(--green-dark)}            /* các tiêu đề xanh lá */
-.title--accent{                                   /* tiêu đề vàng + gạch chân */
+.title--green{color:var(--green-dark)}  /* các tiêu đề xanh lá */
+.title--accent{                        /* tiêu đề vàng + gạch chân */
   color:var(--yellow);
   text-decoration: underline;
   text-decoration-thickness: 3px;
   text-underline-offset: 6px;
 }
-.content p{margin:10px 0}
 
-/* Green band */
-.band{background:#8ec24e;padding:26px 0 34px}
-.band .triplet{display:grid;gap:18px;grid-template-columns:repeat(3,1fr);margin-top:8px}
-.band .triplet img{border-radius:4px;box-shadow:0 8px 16px rgba(0,0,0,.18)}
-.band .band-text{margin-top:12px;color:#0b2104}
-
-/* Bottom inline form: thêm ô Email */
-.footer-cta{background:#d9ebba;padding:20px 0 40px}
-.inline-form{
-  display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;margin-top:10px
+/* GREEN BAND (điều chỉnh bố cục & chữ trắng) */
+.band{
+  background:#6fb43a;                 /* dải xanh */
+  padding:30px 0 38px;
+  color:#fff;                          /* chữ trong band mặc định trắng */
 }
+.band__inner{ text-align:center; }
+.band .triplet{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(240px, 1fr));
+  gap:20px;
+  max-width:1040px;
+  margin:12px auto 0;
+}
+.band .triplet img{
+  width:100%;
+  aspect-ratio: 4 / 3;                 /* 3 ảnh đồng đều tỉ lệ */
+  object-fit: cover;
+  border-radius:6px;
+  box-shadow:0 10px 20px rgba(0,0,0,.18);
+}
+.band .band-text{
+  max-width:900px;
+  margin:14px auto 0;
+  color:#fff;                          /* đảm bảo chữ trắng */
+  opacity:.98;
+}
+
+/* Bottom inline form (có thêm email) */
+.footer-cta{background:#d9ebba;padding:20px 0 40px}
+.inline-form{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;margin-top:10px}
 .inline-form input{padding:14px 12px;border:1px solid #c7d8a5;border-radius:2px;font-size:16px}
 
 @media (max-width: 960px){
   .grid-2{grid-template-columns:1fr}
   .hero{height:520px}
+  .band .triplet{grid-template-columns:1fr}
   .inline-form{grid-template-columns:1fr;gap:10px}
 }
