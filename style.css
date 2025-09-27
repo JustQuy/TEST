@@ -55,31 +55,31 @@ img{max-width:100%;display:block}
   padding:30px 0 38px;
   color:#fff;
 }
-.band__top{
-  display:grid;
-  grid-template-columns: 1fr minmax(300px, 460px);
-  gap: 24px;
-  align-items: center;
+.band__top {
+  display: grid;
+  grid-template-columns: 1fr 360px; /* ảnh nhỏ lại */
+  gap: 32px;
+  align-items: stretch; /* block chữ và ảnh cùng chiều cao */
 }
-.band__top .title{
-  margin:0;
-  color: var(--yellow);
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-underline-offset: 6px;
+
+.band__top .title {
+  font-size: 28px;   /* phóng to tiêu đề */
+  line-height: 1.3;
+  margin-bottom: 14px;
 }
-.band__img{
-  width:100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius:6px;
-  box-shadow:0 10px 20px rgba(0,0,0,.18);
+
+.band__img {
+  width: 100%;
+  height: 100%;         /* chiếm đủ chiều cao */
+  object-fit: cover;    /* cắt ảnh cho vừa khối */
+  border-radius: 6px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.18);
 }
+
 .band-text {
-  margin: 12px 0 0 0; /* ngay dưới tiêu đề */
-  color: #fff;
-  opacity: .98;
-  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
 }
 
 }
