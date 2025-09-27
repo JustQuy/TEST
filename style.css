@@ -75,14 +75,13 @@ img{max-width:100%;display:block}
   border-radius:6px;
   box-shadow:0 10px 20px rgba(0,0,0,.18);
 }
-.band-text{
-  max-width:900px;
-  margin-inline:auto;
-  margin-block-start:12px;
-  margin-block-end:8px;
-  color:#fff;
-  opacity:.98;
-  font-weight:500;
+.band-text {
+  margin: 12px 0 0 0; /* ngay dưới tiêu đề */
+  color: #fff;
+  opacity: .98;
+  font-weight: 500;
+}
+
 }
 
 /* Bottom inline form */
