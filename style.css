@@ -75,7 +75,7 @@ img{max-width:100%;display:block}
 .section{padding:42px 0}
 .section--alt{background:#49A333}
 .grid-2{display:grid;gap:28px;grid-template-columns:1.05fr .95fr}
-.img-card{border-radius:4px;overflow:hidden;box-shadow:0 10px 22px rgba(0,0,0,.15)}
+.img-card{border-radius: solid blue 4px;overflow:hidden;box-shadow:0 10px 22px rgba(0,0,0,.15)}
 .title{font-weight:800;letter-spacing:.3px;margin:0 0 8px 0}
 .title--green{color:var(--green-dark)}
 .title--accent{
