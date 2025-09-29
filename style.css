@@ -122,7 +122,7 @@ img{max-width:100%;display:block}
 
 /* Bottom inline form */
 .footer-cta {
-  background: var(--yellow);
+  background: #e7e259;
   padding: 30px 0 40px;
 }
 .footer-cta .title {
